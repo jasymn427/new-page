@@ -1,0 +1,14 @@
+name: GitHub Pages Deploy
+on:
+  push:
+    branches: [main]  # 监听 main 分支推送，若你的默认分支是 master，就改成 master
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./  # 部署仓库根目录下的文件，若有子目录存放网页，需修改此处
